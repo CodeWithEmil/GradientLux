@@ -1,20 +1,95 @@
 @import url(https://fonts.googleapis.com/css?family=JetBrains+Mono:100,200,300,regular,500,600,700,800,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic);
 @import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
 @import url(https://fonts.googleapis.com/css?family=JetBrains+Mono:100,200,300,regular,500,600,700,800,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic);
+.whole {
+  height: 35rem;
+  width: 70rem;
+  border-radius: 19px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
+  display: grid;
+  place-items: center;
+}
+
 .code--container {
   height: 20rem;
   width: 50rem;
+  background: #fff;
   border-radius: 15px;
   box-shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
+  display: grid;
+  grid-template-areas: "info" "wrapper";
 }
-
-.code--section {
+.code--container .code--info {
+  place-self: center;
+  border: transparent;
+  grid-area: info;
+  width: 92%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.code--container .code--info .title {
+  border: transparent;
+}
+.code--container .code--info .clipboard {
+  height: 3rem;
+  width: 3rem;
+  background: #680ac0;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.code--container .code--info .clipboard i {
+  font-size: 1.5rem;
+  z-index: 1;
+  transition: 0.3s;
+}
+.code--container .code--info .clipboard .clipboard--hover {
+  position: absolute;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 10px;
+  background: #890aff;
+  transition: 0.3s;
+}
+.code--container .code--info .clipboard:hover .clipboard--hover, .code--container .code--info .clipboard:hover i {
+  transform: translateY(-4px);
+}
+.code--container .code--info .clipboard:hover i {
+  z-index: 1;
+}
+.code--container .code--info .clipboard:active .clipboard--hover, .code--container .code--info .clipboard:active i {
+  transform: translateY(-2px);
+}
+.code--container .code--info .clipboard:active .clipboard--hover {
+  background: #740ed3;
+}
+.code--container .code--wrapper {
+  grid-area: wrapper;
+  place-self: center;
+  border: transparent;
+  height: fit-content;
+  min-height: 70%;
+  width: 92%;
   background: #2A2E3F;
+  border-radius: 15px;
+  padding: 15px 0;
+  display: grid;
+  justify-items: center;
+  align-items: start;
 }
-.code--section ol li {
+.code--container .code--wrapper .code--section {
+  background: #2A2E3F;
+  width: 88%;
+}
+.code--container .code--wrapper .code--section ol li {
   font-family: "JetBrains Mono";
 }
-.code--section ol li span {
+.code--container .code--wrapper .code--section ol li span {
   font-family: "JetBrains Mono";
 }
 
@@ -27,11 +102,11 @@
 }
 
 .input {
-  color: #659FD0;
+  color: #67ABB6;
 }
 
 .value {
-  color: #8EA773;
+  color: #9AB67B;
 }
 
 .media {

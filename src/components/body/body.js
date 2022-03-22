@@ -1,14 +1,27 @@
 import React from "react";
 
+const Info = (props) => {
+    return (
+        <div className="code--info">
+            <div className="title">
+                <h2>
+                    {props.one} — {props.two}
+                </h2>
+            </div>
+            <button className="clipboard">
+                <i className="fa-solid fa-clipboard"></i>
+                <div className="clipboard--hover"></div>
+            </button>
+        </div>
+    );
+}
+
 const Section = (props) => {
     let one = props.one;
     let two = props.two;
-    let three = props.three;
+    let fallback = props.fallback;
 
-    let stylesColorOne = {
-        backgroundColor: `${three}`
-    }
-
+    let direction = props.direction;
 
     let getBrightness = (color) => {
         color = color.replace("#", "");
@@ -20,29 +33,76 @@ const Section = (props) => {
         return yiq >= 128 ? "black" : "white";
     };
 
+    let stylesColorOne = {
+        backgroundColor: `${one}`,
+        color: getBrightness(`${one}`),
+        borderRradius: "10px"
+    }
+
+    let stylesColorTwo = {
+        backgroundColor: `${two}`,
+        color: getBrightness(`${two}`),
+        borderRradius: "10px"
+    };
+
+    let stylesColorFallback = {
+        backgroundColor: `${fallback}`,
+        color: getBrightness(`${fallback}`),
+        borderRradius: "10px"
+    };
+
     return (
-        <div className = "code--section">
-            <ol className = "text">
-                <li><span className = "property">background</span>: <span style={{backgroundColor: `${three}`}}>{three}</span>;</li>
-                <li><span className = "property">background</span>: <span className = "input">-webkit</span><span className = "value">-linear-gradient</span><span className = "media">(</span>to left, <span style={{backgroundColor: `${one}`}}>{one}</span>, <span style={{backgroundColor: `${two}`}}>{two}</span><span className = "media">)</span>;</li>
-                <li><span className = "property">background</span>: <span className = "value">linear-gradient</span><span className = "media">(</span>to left, <span style={{backgroundColor: `${one}`}}>{one}</span>, <span style={{backgroundColor: `${two}`}}>{two}</span><span className = "media">)</span>;</li>
-            </ol>
+        <div className = "code--wrapper">
+            <div className = "code--section">
+                <ol className = "text">
+                    <li>
+                        <span className = "property">background</span>: <span style={stylesColorFallback}>{fallback}</span>;
+                    </li>
+                    <li>
+                        <span className = "property">background</span>: <span className = "input">-webkit</span><span className = "value">-linear-gradient</span><span className = "media">(</span>to {direction}, <span style={stylesColorOne}>{one}</span>, <span style={stylesColorTwo}>{two}</span><span className = "media">)</span>;
+                    </li>
+                    <li>
+                        <span className = "property">background</span>: <span className = "value">linear-gradient</span><span className = "media">(</span>to {direction}, <span style={stylesColorOne}>{one}</span>, <span style={stylesColorTwo}>{two}</span><span className = "media">)</span>;
+                    </li>
+                </ol>
+            </div>
         </div>
+    )
+}
+
+const Media = (props) => {
+    return (
+        <div>hello</div>
     )
 }
 
 const Code = (props) => {
     let one = props.one;
     let two = props.two;
-    let three = props.three
+    let fallback = props.fallback
+    let direction = props.direction
 
     return (
         <div className="code--container">
-            <div className = "title">{one} — {two}</div>
-            <Section one = {one} two = {two} three = {three} />
+            <Info one={one} two={two} />
+            <Section one = {one} two = {two} fallback = {fallback} direction = {direction} />
+            <Media />
         </div>
     );
 }
 
-const CodeMemo = React.memo(Code);
+const Whole = (props) => {
+    let wholeStyles = {
+        backgroundImage: `linear-gradient(to ${props.direction}, ${props.one}, ${props.two})`,
+    }
+
+    return (
+        <div className = "whole" style={wholeStyles}>
+            <Code one = {props.one} two = {props.two} fallback={props.fallback} direction={props.direction}/>
+        </div>
+    )
+
+}
+
+const CodeMemo = React.memo(Whole);
 export default CodeMemo;

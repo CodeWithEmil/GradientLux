@@ -4,32 +4,147 @@
 //Palette
 $text: #A6ACCD;
 $prop: #C7646D;
-$input: #659FD0;
-$value: #8EA773;
+$input: #67ABB6;
+$value: #9AB67B;
 $media: #F2CC47;
+$background: #2A2E3F;
 
 //Styles
+.whole {
+    height: 35rem;
+    width: 70rem;
+
+    border-radius: 19px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
+    
+    display: grid;
+    place-items: center;
+}
+
 .code--container {
     height: 20rem;
     width: 50rem;
 
+    background: #fff;
     border-radius: 15px;
     box-shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
-}
 
-.code--section {
-    background: #2A2E3F;
+    display: grid;
+    grid-template-areas:
+        "info"
+        "wrapper"
+    ;
+
+    .code--info {
+        place-self: center;
+
+        border: transparent; //solid orange;
+        grid-area: info;
+
+        width: 92%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        .title {
+            border: transparent; //solid navy;
+        }
     
-    ol {
-        li {
-            font-family: "JetBrains Mono";
+        //Copy to clipboard styles
+        .clipboard {    
+            height: 3rem;
+            width: 3rem;
+    
+            background: #680ac0;
+            color: #fff;
+            border-radius: 10px;
+            border: none;
+    
+            cursor: pointer;
+    
+            display: grid;
+            place-items: center;
+    
+            i {
+                font-size: 1.5rem;
+                z-index: 1;
+                transition: .3s;
+            }
 
-            span {
-                font-family: "JetBrains Mono";
+            .clipboard--hover {
+                position: absolute;
+
+                height: 3rem;
+                width: 3rem;
+                border-radius: 10px;
+                background: #890aff;
+                transition: .3s;
+            }
+        }
+
+        
+
+        .clipboard:hover {         
+            .clipboard--hover, i {
+                transform: translateY(-4px);
+            }
+
+            i {
+                z-index: 1;
+            }
+        }
+        
+        .clipboard:active {
+
+            .clipboard--hover, i {
+                transform: translateY(-2px);
+            }
+
+            .clipboard--hover {
+                background: #740ed3;
+            }
+        }
+    }
+
+    .code--wrapper {
+        grid-area: wrapper;
+
+        place-self: center;
+        border: transparent; //solid red;
+
+        height: fit-content;
+        min-height: 70%;
+        width: 92%;
+
+        background: $background;
+        border-radius: 15px;
+        padding: 15px 0;
+
+        display: grid;
+        justify-items: center;
+        align-items: start;
+
+        .code--section {
+            background: $background;
+
+            width: 88%;
+            
+            ol {
+                li {
+                    font-family: "JetBrains Mono";
+        
+                    span {
+                        font-family: "JetBrains Mono";
+                    }
+                }
             }
         }
     }
 }
+
+
 
 //Editor
 .text {
