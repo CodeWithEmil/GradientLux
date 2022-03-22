@@ -1,0 +1,53 @@
+//Fonts
+@import url(https://fonts.googleapis.com/css?family=JetBrains+Mono:100,200,300,regular,500,600,700,800,100italic,200italic,300italic,italic,500italic,600italic,700italic,800italic);
+
+//Palette
+$text: #A6ACCD;
+$prop: #C7646D;
+$input: #659FD0;
+$value: #8EA773;
+$media: #F2CC47;
+
+//Styles
+.code--container {
+    height: 20rem;
+    width: 50rem;
+
+    border-radius: 15px;
+    box-shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
+}
+
+.code--section {
+    background: #2A2E3F;
+    
+    ol {
+        li {
+            font-family: "JetBrains Mono";
+
+            span {
+                font-family: "JetBrains Mono";
+            }
+        }
+    }
+}
+
+//Editor
+.text {
+    color: $text;
+}
+
+.property {
+    color: $prop;
+}
+
+.input {
+    color: $input;
+}
+
+.value {
+    color: $value;
+}
+
+.media {
+    color: $media;
+}

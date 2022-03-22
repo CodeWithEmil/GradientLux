@@ -1,13 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import reportWebVitals from './reportWebVitals';
 
+//Components
+import CodeMemo from "./components/body/body";
+
+//Styles
+import "./general.css";
+
 ReactDOM.render(
-  <React.StrictMode>
-    <h1>Hello World!</h1>
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <CodeMemo one="#F6B796" two="#B03B63" three="#000" />
+    </React.StrictMode>,
+    document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
