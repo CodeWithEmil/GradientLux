@@ -13,11 +13,12 @@
 .code--container {
   height: 20rem;
   width: 50rem;
+  padding: 20px 0;
   background: #fff;
   border-radius: 15px;
   box-shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
   display: grid;
-  grid-template-areas: "info" "wrapper";
+  grid-template-areas: "info" "wrapper" "buttons";
 }
 .code--container .code--info {
   place-self: center;
@@ -31,6 +32,7 @@
 }
 .code--container .code--info .title {
   border: transparent;
+  user-select: none;
 }
 .code--container .code--info .clipboard {
   height: 3rem;
@@ -92,6 +94,79 @@
 .code--container .code--wrapper .code--section ol li span {
   font-family: "JetBrains Mono";
 }
+.code--container .code--buttons {
+  grid-area: buttons;
+  place-self: center;
+  width: 92%;
+  user-select: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /*
+  .heart {
+      button {
+          background: #ffb4b4;
+      }
+
+      .button--hover {
+          background: #ff8282;
+      }
+  }
+  .embed {
+      button {
+          background: #b4f4ff;
+      }
+
+      .button--hover {
+          background: #63c4c7;
+      }
+  }
+  .bookmark {
+      button {
+          background: #b4ffb8;
+      }
+
+      .button--hover {
+          background: #63c763;
+      }
+  }
+  .share {
+      button {
+          background: #ffeeb4;
+      }
+
+      .button--hover {
+          background: #c79863;
+      }
+  }*/
+}
+.code--container .code--buttons .button {
+  display: grid;
+  place-items: center;
+}
+.code--container .code--buttons .button button {
+  width: 10rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  z-index: 1;
+  transition: 0.3s;
+}
+.code--container .code--buttons .button button:hover {
+  transform: translateY(-4px);
+}
+.code--container .code--buttons .button button:active {
+  transform: translateY(-2px);
+  background: #e4e4e4;
+}
+.code--container .code--buttons .button .button--hover {
+  position: absolute;
+  height: 2.5rem;
+  width: 10rem;
+  background: #cfcfcf;
+  border-radius: 7px;
+  z-index: 0;
+}
 
 .text {
   color: #A6ACCD;
@@ -123,6 +198,7 @@
 #root {
   height: 100vh;
   width: 100%;
+  background: #e1f2ff;
   display: grid;
   place-items: center;
 }

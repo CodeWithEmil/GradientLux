@@ -10,7 +10,7 @@ import "./general.css";
 
 ReactDOM.render(
     <React.StrictMode>
-        <CodeMemo one="#F6B796" two="#B03B63" fallback="#000" direction="right" />
+        <CodeMemo one="#F6B796" two="#B03B63" fallback="#000" direction="left" />
     </React.StrictMode>,
     document.getElementById("root")
 );

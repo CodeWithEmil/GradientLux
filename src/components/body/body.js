@@ -1,14 +1,27 @@
 import React from "react";
+import toast, { Toaster } from "react-hot-toast";
+
 
 const Info = (props) => {
+    let copy = () => {
+        let gradient = `background: ${props.fallback};
+        background: -webkit-linear-gradient(to ${props.direction}, ${props.one}, ${props.two});
+        background: linear-gradient(to ${props.direction}, ${props.one}, ${props.two};`;
+        navigator.clipboard.writeText(gradient);
+
+        let notif = toast.success("Copied!");
+
+        return notif;
+    }
+
     return (
         <div className="code--info">
             <div className="title">
-                <h2>
+                <h1>
                     {props.one} — {props.two}
-                </h2>
+                </h1>
             </div>
-            <button className="clipboard">
+            <button className="clipboard" onClick = {copy}>
                 <i className="fa-solid fa-clipboard"></i>
                 <div className="clipboard--hover"></div>
             </button>
@@ -71,9 +84,41 @@ const Section = (props) => {
 }
 
 const Media = (props) => {
+    let hearted = () => {
+        let notif = toast("Hearted!", {
+            icon: "❤️",
+        });
+        return notif;
+    }
+
     return (
-        <div>hello</div>
-    )
+        <div className="code--buttons">
+            <div className="button heart">
+                <button onClick = {hearted}>
+                    <i className="fa-solid fa-heart" /> I like it!
+                </button>
+                <div className="button--hover"></div>
+            </div>
+            <div className="button embed">
+                <button>
+                    <i className="fa-solid fa-code" /> Embed
+                </button>
+                <div className="button--hover"></div>
+            </div>
+            <div className="button bookmark">
+                <button>
+                    <i className="fa-solid fa-bookmark" /> Bookmark
+                </button>
+                <div className="button--hover"></div>
+            </div>
+            <div className="button share">
+                <button>
+                    <i className="fa-solid fa-share" /> Share
+                </button>
+                <div className="button--hover"></div>
+            </div>
+        </div>
+    );
 }
 
 const Code = (props) => {
@@ -84,7 +129,7 @@ const Code = (props) => {
 
     return (
         <div className="code--container">
-            <Info one={one} two={two} />
+            <Info one = {one} two = {two} fallback = {fallback} direction = {direction} />
             <Section one = {one} two = {two} fallback = {fallback} direction = {direction} />
             <Media />
         </div>
@@ -98,6 +143,7 @@ const Whole = (props) => {
 
     return (
         <div className = "whole" style={wholeStyles}>
+            <Toaster />
             <Code one = {props.one} two = {props.two} fallback={props.fallback} direction={props.direction}/>
         </div>
     )
