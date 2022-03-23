@@ -87,79 +87,79 @@ const Section = (props) => {
 }
 
 const Media = (props) => {
-    //References
-    let heartButton = useRef(null);
-    let bookmarkButton = useRef(null);
+    //Components
+    const Button = (props) => {
+        //References
+        let button = useRef(null);
 
-    //State Aid
-        //Heart
-        let [heartPressed, setHeartPressed] = useState(false);
-        let [heartMessage, setHeartMessage] = useState("Hearted!");
-        let [heartEmoji, setHeartEmoji] = useState("❤️");
+        //Properties
+        let mainEmoji = props.mainEmoji;
+        let altEmoji = props.altEmoji;
+        let mainMessage = props.mainMessage;
+        let altMessage = props.altMessage;
 
-        //Bookmark
-        let [bookmarkPressed, setBookmarkPressed] = useState(false);
-        let [bookmarkMessage, setBookmarkMessage] = useState("Bookmarked!");
-        let [bookmarkEmoji, setBookmarkEmoji] = useState("📖");
+        let displayMessage = props.displayMessage;
+        let classN = props.classN;
 
-    let hearted = () => {
-        if (heartPressed) {
-            setHeartMessage("Hearted!");
-            setHeartEmoji("❤️");
-        } else if (!heartPressed) {
-            setHeartMessage("Un-hearted!");
-            setHeartEmoji("💔");
-        }
+        //State Aid
+        let [buttonPressed, setButtonPressed] = useState(false);
+        let [buttonMessage, setButtonMessage] = useState(mainMessage);
+        let [buttonEmoji, setButtonEmoji] = useState(mainEmoji);
 
-        let notif = toast(`${heartMessage}`, {
-            icon: `${heartEmoji}`,
-        });
+        //Methods
+        let clicked = () => {
+            if (buttonPressed) {
+                setButtonMessage(`${mainMessage}`);
+                setButtonEmoji(`${mainEmoji}`);
+            } else if (!buttonPressed) {
+                setButtonMessage(`${altMessage}`);
+                setButtonEmoji(`${altEmoji}`);
+            }
 
-        heartButton.current.classList.toggle("heart--checked");
-        setHeartPressed(!heartPressed);
+            let notif = toast(`${buttonMessage}`, {
+                icon: `${buttonEmoji}`,
+            });
 
-        return notif;
-    }
+            button.current.classList.toggle(`${classN}--checked`);
+            setButtonPressed(!buttonPressed);
 
-    let bookmark = () => {
-        if (bookmarkPressed) {
-            setBookmarkMessage("Bookmarked!");
-            setBookmarkEmoji("📖");
-        } else if (!bookmarkPressed) {
-            setBookmarkMessage("Un-bookmarked!");
-            setBookmarkEmoji("📙");
-        }
+            return notif;
+        };
 
-        let notif = toast(`${bookmarkMessage}`, {
-            icon: `${bookmarkEmoji}`,
-        });
-
-        bookmarkButton.current.classList.toggle("bookmark--checked");
-        setBookmarkPressed(!bookmarkPressed);
-
-        return notif;
-    };
-
-    return (
-        <div className="code--buttons">
-            <div className="button" ref = {heartButton}>
-                <button onClick = {hearted}>
-                    <i className="fa-solid fa-heart" /> I like it!
+        return (
+            <div className="button" ref={button}>
+                <button onClick={clicked}>
+                    <i className={`fa-solid fa-${classN}`} /> {displayMessage}
                 </button>
                 <div className="button--hover"></div>
             </div>
+        );
+    };
+    
+    return (
+        <div className="code--buttons">
+            <Button
+                mainEmoji="❤️"
+                altEmoji="💔"
+                mainMessage="Hearted!"
+                altMessage="Un-hearted!"
+                displayMessage="I like it!"
+                classN="heart"
+            />
             <div className="button embed">
                 <button>
                     <i className="fa-solid fa-code" /> Embed
                 </button>
                 <div className="button--hover"></div>
             </div>
-            <div className="button" ref = {bookmarkButton}>
-                <button onClick = {bookmark}>
-                    <i className="fa-solid fa-bookmark" /> Bookmark
-                </button>
-                <div className="button--hover"></div>
-            </div>
+            <Button
+                mainEmoji="📖"
+                altEmoji="📙"
+                mainMessage="Bookmarked!"
+                altMessage="Un-bookmarked!"
+                displayMessage="Bookmark"
+                classN="bookmark"
+            />
             <div className="button share">
                 <button>
                     <i className="fa-solid fa-share" /> Share
