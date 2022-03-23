@@ -1,4 +1,5 @@
 import React from "react";
+import { useRef, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 
 
@@ -9,7 +10,9 @@ const Info = (props) => {
         background: linear-gradient(to ${props.direction}, ${props.one}, ${props.two};`;
         navigator.clipboard.writeText(gradient);
 
-        let notif = toast.success("Copied!");
+        let notif = toast.success("Copied!", {
+            duration: 5000
+        });
 
         return notif;
     }
@@ -84,16 +87,62 @@ const Section = (props) => {
 }
 
 const Media = (props) => {
+    //References
+    let heartButton = useRef(null);
+    let bookmarkButton = useRef(null);
+
+    //State Aid
+        //Heart
+        let [heartPressed, setHeartPressed] = useState(false);
+        let [heartMessage, setHeartMessage] = useState("Hearted!");
+        let [heartEmoji, setHeartEmoji] = useState("❤️");
+
+        //Bookmark
+        let [bookmarkPressed, setBookmarkPressed] = useState(false);
+        let [bookmarkMessage, setBookmarkMessage] = useState("Bookmarked!");
+        let [bookmarkEmoji, setBookmarkEmoji] = useState("📖");
+
     let hearted = () => {
-        let notif = toast("Hearted!", {
-            icon: "❤️",
+        if (heartPressed) {
+            setHeartMessage("Hearted!");
+            setHeartEmoji("❤️");
+        } else if (!heartPressed) {
+            setHeartMessage("Un-hearted!");
+            setHeartEmoji("💔");
+        }
+
+        let notif = toast(`${heartMessage}`, {
+            icon: `${heartEmoji}`,
         });
+
+        heartButton.current.classList.toggle("heart--checked");
+        setHeartPressed(!heartPressed);
+
         return notif;
     }
 
+    let bookmark = () => {
+        if (bookmarkPressed) {
+            setBookmarkMessage("Bookmarked!");
+            setBookmarkEmoji("📖");
+        } else if (!bookmarkPressed) {
+            setBookmarkMessage("Un-bookmarked!");
+            setBookmarkEmoji("📙");
+        }
+
+        let notif = toast(`${bookmarkMessage}`, {
+            icon: `${bookmarkEmoji}`,
+        });
+
+        bookmarkButton.current.classList.toggle("bookmark--checked");
+        setBookmarkPressed(!bookmarkPressed);
+
+        return notif;
+    };
+
     return (
         <div className="code--buttons">
-            <div className="button heart">
+            <div className="button" ref = {heartButton}>
                 <button onClick = {hearted}>
                     <i className="fa-solid fa-heart" /> I like it!
                 </button>
@@ -105,8 +154,8 @@ const Media = (props) => {
                 </button>
                 <div className="button--hover"></div>
             </div>
-            <div className="button bookmark">
-                <button>
+            <div className="button" ref = {bookmarkButton}>
+                <button onClick = {bookmark}>
                     <i className="fa-solid fa-bookmark" /> Bookmark
                 </button>
                 <div className="button--hover"></div>

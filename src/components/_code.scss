@@ -194,11 +194,12 @@ $main: #890aff;
                 background: #cfcfcf;
                 border-radius: 7px;
                 z-index: 0;
+
+                transition: .3s;
             }
         }
 
-        /*
-        .heart {
+        .heart--checked {
             button {
                 background: #ffb4b4;
             }
@@ -207,6 +208,18 @@ $main: #890aff;
                 background: #ff8282;
             }
         }
+
+        .bookmark--checked {
+            button {
+                background: #b4ffb8;
+            }
+            
+            .button--hover {
+                background: #63c763;
+            }
+        }
+
+        /*
         .embed {
             button {
                 background: #b4f4ff;
@@ -214,15 +227,6 @@ $main: #890aff;
             
             .button--hover {
                 background: #63c4c7;
-            }
-        }
-        .bookmark {
-            button {
-                background: #b4ffb8;
-            }
-            
-            .button--hover {
-                background: #63c763;
             }
         }
         .share {

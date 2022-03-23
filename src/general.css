@@ -102,15 +102,6 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   /*
-  .heart {
-      button {
-          background: #ffb4b4;
-      }
-
-      .button--hover {
-          background: #ff8282;
-      }
-  }
   .embed {
       button {
           background: #b4f4ff;
@@ -118,15 +109,6 @@
 
       .button--hover {
           background: #63c4c7;
-      }
-  }
-  .bookmark {
-      button {
-          background: #b4ffb8;
-      }
-
-      .button--hover {
-          background: #63c763;
       }
   }
   .share {
@@ -166,6 +148,19 @@
   background: #cfcfcf;
   border-radius: 7px;
   z-index: 0;
+  transition: 0.3s;
+}
+.code--container .code--buttons .heart--checked button {
+  background: #ffb4b4;
+}
+.code--container .code--buttons .heart--checked .button--hover {
+  background: #ff8282;
+}
+.code--container .code--buttons .bookmark--checked button {
+  background: #b4ffb8;
+}
+.code--container .code--buttons .bookmark--checked .button--hover {
+  background: #63c763;
 }
 
 .text {
