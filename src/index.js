@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 
 //Components
-import CodeMemo from "./components/body/body";
+import BodyMemo from "./components/body/body";
 
 //Styles
 import "./general.css";
 
 ReactDOM.render(
     <React.StrictMode>
-        <CodeMemo one="#F6B796" two="#B03B63" fallback="#000" direction="left" />
+        <BodyMemo />
     </React.StrictMode>,
     document.getElementById("root")
 );
