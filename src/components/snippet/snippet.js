@@ -4,6 +4,12 @@ import toast, { Toaster } from "react-hot-toast";
 
 
 const Info = (props) => {
+
+    //References
+    let firstItem = useRef(null);
+    let secondItem = useRef(null);
+
+    //Methods
     let copy = () => {
         let gradient = `background: ${props.fallback};
         background: -webkit-linear-gradient(to ${props.direction}, ${props.one}, ${props.two});
@@ -17,14 +23,30 @@ const Info = (props) => {
         return notif;
     }
 
+    let stylesOne = {
+        color: `${props.one}`
+    };
+
+    let stylesTwo = {
+        color: `${props.two}`,
+    };
+
+
+    let value = (value) => {
+        let string = value.replace("#", "");
+        return string;
+    }
+
     return (
         <div className="code--info">
             <div className="title">
                 <h1>
-                    {props.one} — {props.two}
+                    <span ref={firstItem} style = {stylesOne}>#</span>
+                    {value(props.one)} — <span ref={secondItem} style = {stylesTwo}>#</span>
+                    {value(props.two)}
                 </h1>
             </div>
-            <button className="clipboard" onClick = {copy}>
+            <button className="clipboard" onClick={copy}>
                 <i className="fa-solid fa-clipboard"></i>
                 <div className="clipboard--hover"></div>
             </button>

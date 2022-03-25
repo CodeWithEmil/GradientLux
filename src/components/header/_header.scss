@@ -1,0 +1,68 @@
+//Palette
+$main: #890aff;
+$sub: #991cff;
+$alt: #2f0aff;
+
+//Variables
+$shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
+
+
+//Styles
+.header {
+    width: 100vw;
+    height: 11vh;
+
+    position: fixed;
+    top: 0;
+
+    background: #e9f3ffc9;
+    box-shadow: $shadow;
+
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    .header--info {
+        width: 18.5%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        cursor: pointer;
+
+        transition: .3s;
+
+        img {
+            height: 6vh;
+            transition: .3s;
+        }
+
+        h1 {
+            span {
+                background-image: linear-gradient(45deg, $main, $alt 20%, $sub);
+                background-size: 200vh;
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+
+                transition: 1s;
+            }
+        }
+    }
+
+    .header--info:hover {
+        img {
+            transform: rotate(-4deg);
+        }
+        h1 {
+            span {
+                background-position: 100vh;
+            }
+        }
+    }
+}

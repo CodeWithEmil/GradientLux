@@ -1,5 +1,7 @@
 //Modules
 @use "./components/openup/openup";
+@use "./components/header/header";
+@use "./components/footer/footer";
 @use "./components/code";
 
 //Fonts
@@ -17,7 +19,8 @@
 }
 
 #root {
-    height: 100vh;
+    height: fit-content;
+    min-height: 100vh;
     width: 100%;
 
     background: #e1f2ff;
