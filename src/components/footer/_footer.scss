@@ -1,0 +1,45 @@
+//Palette
+$main: #890aff;
+$sub: #991cff;
+$alt: #2f0aff;
+
+//File palette
+$bg: linear-gradient(45deg, #03062e,#31367b);
+$color: #dfe0f6;
+
+//Variables
+$shadow: rgba(17, 12, 46, 0.15) 0 48px 100px 0;
+$height: 13vh;
+
+
+//Styles
+.footer {
+    position: absolute;
+    bottom: -$height;
+
+    height: $height;
+    width: 100%;
+
+    padding-left: 2vw;
+    background: $bg;
+
+    display: grid;
+    align-items: center;
+
+    .footer--info {
+        h3 {
+            color: $color;
+            font-weight: 350;
+
+            a, a:link, a:visited {
+                color: $color;
+                text-decoration: none;
+                font-weight: 600;
+            }
+
+            a:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
